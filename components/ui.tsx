@@ -6,16 +6,16 @@ import { ArrowRight } from "./icons";
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "lime" | "gold" | "navy" | "outline";
+  variant?: "lime" | "gold" | "navy" | "ghost";
   className?: string;
   withArrow?: boolean;
 };
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
-  lime: "bg-brand text-navy hover:bg-brand-dark",
-  gold: "bg-gold text-navy hover:brightness-95",
-  navy: "bg-navy text-white hover:bg-navy-700",
-  outline: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
+  lime: "bg-brand text-ink hover:bg-brand-dark",
+  gold: "bg-gold text-ink hover:brightness-[0.97]",
+  navy: "bg-navy text-white hover:bg-navy-600",
+  ghost: "border border-white/30 text-white hover:bg-white hover:text-navy",
 };
 
 export function Button({
@@ -28,26 +28,28 @@ export function Button({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide shadow-sm transition-all hover:scale-[1.03] ${variants[variant]} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[13px] font-bold uppercase tracking-[0.06em] transition-all duration-300 ease-out hover:-translate-y-0.5 ${variants[variant]} ${className}`}
     >
       {children}
       {withArrow && (
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
       )}
     </Link>
   );
 }
 
-/* ---------------- Icon badge ---------------- */
-type Tone = "emerald" | "gold" | "sky" | "navy";
+/* ---------------- Icon mark ---------------- */
+type Tone = "emerald" | "gold" | "sky" | "navy" | "brand";
 
 const tones: Record<Tone, string> = {
-  emerald: "bg-emerald text-white",
-  gold: "bg-gold text-navy",
-  sky: "bg-sky text-white",
-  navy: "bg-navy text-brand",
+  emerald: "text-emerald",
+  gold: "text-gold",
+  sky: "text-sky",
+  navy: "text-navy",
+  brand: "text-brand-dark",
 };
 
+/** Minimal icon mark — ring, not a filled template badge. */
 export function IconBadge({
   children,
   tone = "emerald",
@@ -59,49 +61,7 @@ export function IconBadge({
 }) {
   return (
     <span
-      className={`inline-flex h-14 w-14 items-center justify-center rounded-full ${tones[tone]} ${className}`}
-    >
-      {children}
-    </span>
-  );
-}
-
-/* ---------------- Photo placeholder ----------------
-   Styled stand-in for real photography. Drop a real <Image> here later. */
-export function Photo({
-  label,
-  emoji = "🎾",
-  className = "",
-  rounded = "rounded-2xl",
-}: {
-  label: string;
-  emoji?: string;
-  className?: string;
-  rounded?: string;
-}) {
-  return (
-    <div className={`photo ${rounded} ${className}`}>
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center">
-        <span className="text-4xl drop-shadow">{emoji}</span>
-        <span className="max-w-[14rem] text-xs font-semibold uppercase tracking-wider text-white/70">
-          {label}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-/* ---------------- Eyebrow / section label ---------------- */
-export function Eyebrow({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <span
-      className={`text-xs font-extrabold uppercase tracking-[0.2em] text-emerald ${className}`}
+      className={`inline-flex h-12 w-12 items-center justify-center rounded-full border border-current/25 ${tones[tone]} ${className}`}
     >
       {children}
     </span>

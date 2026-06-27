@@ -4,7 +4,7 @@ type LogoProps = {
   className?: string;
 };
 
-/** NEXTGEN TENNIS wordmark with a swooshing tennis-ball mark. */
+/** NEXTGEN TENNIS wordmark with a tennis-seam mark. */
 export default function Logo({ variant = "dark", className = "" }: LogoProps) {
   const top = variant === "light" ? "text-white" : "text-navy";
   return (
@@ -15,30 +15,30 @@ export default function Logo({ variant = "dark", className = "" }: LogoProps) {
         aria-hidden="true"
         fill="none"
       >
-        <circle cx="24" cy="24" r="21" className="fill-navy" />
-        <circle cx="24" cy="24" r="21" className="stroke-brand" strokeWidth="3" />
-        <path
-          d="M9 17c8 1 14 6 16 14 1 4 1 8-1 12"
+        <circle cx="24" cy="24" r="20.5" className="fill-navy" />
+        <circle
+          cx="24"
+          cy="24"
+          r="20.5"
           className="stroke-brand"
-          strokeWidth="3.2"
-          strokeLinecap="round"
-          fill="none"
+          strokeWidth="3"
         />
         <path
-          d="M39 31c-8-1-14-6-16-14-1-4-1-8 1-12"
+          d="M10 16c8 1.5 13.5 7 15.5 15 1 4 1 8-.8 12"
           className="stroke-brand"
-          strokeWidth="3.2"
+          strokeWidth="3"
           strokeLinecap="round"
-          fill="none"
+        />
+        <path
+          d="M38 32c-8-1.5-13.5-7-15.5-15-1-4-1-8 .8-12"
+          className="stroke-brand"
+          strokeWidth="3"
+          strokeLinecap="round"
         />
       </svg>
-      <span className="font-display leading-none">
-        <span
-          className={`block text-[20px] font-extrabold tracking-tight ${top}`}
-        >
-          NEXTGEN
-        </span>
-        <span className="block text-[12px] font-bold tracking-[0.25em] text-brand-dark">
+      <span className="leading-[0.82]">
+        <span className={`block font-display text-[22px] ${top}`}>NEXTGEN</span>
+        <span className="block font-display text-[13px] tracking-[0.34em] text-brand-dark">
           TENNIS
         </span>
       </span>

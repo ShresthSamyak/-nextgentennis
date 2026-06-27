@@ -2,43 +2,53 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { ArrowRight } from "./icons";
 
 const nav = [
-  { label: "HOME", href: "/" },
-  { label: "PROGRAMS", href: "/programs" },
-  { label: "FOR PARENTS", href: "/#why" },
-  { label: "ABOUT", href: "/#about" },
-  { label: "CONTACT", href: "/#register" },
+  { label: "Home", href: "/" },
+  { label: "Programs", href: "/programs" },
+  { label: "For Parents", href: "/#why" },
+  { label: "Pathway", href: "/#pathway" },
+  { label: "Contact", href: "/#register" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href: string) =>
-    href === "/"
-      ? pathname === "/"
-      : href.startsWith("/programs") && pathname === "/programs";
+    href === "/programs" && pathname === "/programs";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/85 backdrop-blur-md">
-      <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-5">
+    <header
+      className={`sticky top-0 z-40 bg-white/90 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled
+          ? "border-b border-black/5 shadow-[0_6px_24px_-18px_rgba(14,22,38,0.5)]"
+          : "border-b border-black/[0.04]"
+      }`}
+    >
+      <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between px-5 sm:px-8">
         <Link href="/" aria-label="NextGen Tennis home">
           <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`text-[13px] font-bold tracking-wide transition-colors hover:text-emerald ${
-                isActive(item.href)
-                  ? "text-emerald underline decoration-brand decoration-2 underline-offset-8"
-                  : "text-navy/80"
+              className={`text-[13px] font-semibold transition-colors hover:text-emerald ${
+                isActive(item.href) ? "text-emerald" : "text-navy/75"
               }`}
             >
               {item.label}
@@ -49,10 +59,10 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/#register"
-            className="hidden items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-[13px] font-extrabold tracking-wide text-navy shadow-sm transition-transform hover:scale-[1.03] sm:inline-flex"
+            className="group hidden items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-[12px] font-bold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald sm:inline-flex"
           >
-            REGISTER NOW
-            <ArrowRight className="h-4 w-4" />
+            Register
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
 
           <button
@@ -60,19 +70,21 @@ export default function Header() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-black/10 lg:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg border border-black/10 lg:hidden"
           >
             <span
-              className={`h-0.5 w-5 bg-navy transition ${
-                open ? "translate-y-2 rotate-45" : ""
+              className={`h-0.5 w-5 bg-navy transition-transform duration-300 ${
+                open ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-0.5 w-5 bg-navy transition ${open ? "opacity-0" : ""}`}
+              className={`h-0.5 w-5 bg-navy transition-opacity duration-300 ${
+                open ? "opacity-0" : ""
+              }`}
             />
             <span
-              className={`h-0.5 w-5 bg-navy transition ${
-                open ? "-translate-y-2 -rotate-45" : ""
+              className={`h-0.5 w-5 bg-navy transition-transform duration-300 ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -81,13 +93,13 @@ export default function Header() {
 
       {open && (
         <nav className="border-t border-black/5 bg-white lg:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col px-5 py-3">
+          <div className="mx-auto flex max-w-[1240px] flex-col px-5 py-2 sm:px-8">
             {nav.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-black/5 py-3 text-sm font-bold tracking-wide text-navy/80 last:border-0"
+                className="border-b border-black/5 py-3.5 text-sm font-semibold text-navy/80 last:border-0"
               >
                 {item.label}
               </Link>
@@ -95,9 +107,9 @@ export default function Header() {
             <Link
               href="/#register"
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-extrabold text-navy"
+              className="my-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-5 py-3 text-[12px] font-bold uppercase tracking-[0.08em] text-white"
             >
-              REGISTER NOW <ArrowRight className="h-4 w-4" />
+              Register <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </nav>
