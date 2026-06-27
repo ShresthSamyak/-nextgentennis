@@ -324,7 +324,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* ===================== FINAL CTA ===================== */}
-      <section className="relative overflow-hidden bg-emerald py-20 text-white sm:py-28">
+      <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-28">
         <TennisBall className="float-y absolute right-[10%] top-12 hidden h-16 w-16 drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] lg:block" />
         <TennisBall className="float-y absolute bottom-12 left-[12%] hidden h-10 w-10 opacity-90 sm:block" />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
