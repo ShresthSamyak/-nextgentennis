@@ -107,6 +107,12 @@ export const Diamond = (p: IconProps) => (
   </svg>
 );
 
+export const Bolt = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+  </svg>
+);
+
 export const User = (p: IconProps) => (
   <svg {...base(p)}>
     <circle cx="12" cy="8" r="3.5" />

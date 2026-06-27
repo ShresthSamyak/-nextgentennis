@@ -11,7 +11,7 @@ import {
   Runner,
   Group,
   Star,
-  Whistle,
+  Bolt,
   Rocket,
   Trophy,
   Check,
@@ -50,29 +50,44 @@ const philosophy = [
 
 const session = [
   {
-    icon: <Whistle className="h-5 w-5" />,
+    num: "01",
+    icon: <Runner className="h-6 w-6" />,
     title: "Warm-up & games",
     time: "10 min",
-    body: "Get active, have fun, and build focus.",
+    shot: PHOTOS.heroWall,
+    body: "Get active, have fun, and build focus with engaging warm-up games.",
   },
   {
-    icon: <Rocket className="h-5 w-5" />,
+    num: "02",
+    icon: <Rocket className="h-6 w-6" />,
     title: "Skill development",
     time: "20 min",
-    body: "Technique and footwork in small groups.",
+    shot: PHOTOS.indoorCoaching,
+    body: "Technique and footwork training in small groups with high repetition.",
   },
   {
-    icon: <Target className="h-5 w-5" />,
+    num: "03",
+    icon: <Target className="h-6 w-6" />,
     title: "Live ball & drills",
     time: "20 min",
-    body: "Apply skills and build consistency.",
+    shot: PHOTOS.overhead,
+    body: "Apply skills into real rallies and drills that build consistency and control.",
   },
   {
-    icon: <Trophy className="h-5 w-5" />,
+    num: "04",
+    icon: <Trophy className="h-6 w-6" />,
     title: "Match play",
     time: "10 min",
-    body: "Competitive play to bring it together.",
+    shot: PHOTOS.girlRacquet,
+    body: "Competitive play in a fun, positive environment to bring it all together.",
   },
+];
+
+const sessionFeatures = [
+  { icon: <Bolt className="h-6 w-6" />, title: "Fast paced", sub: "No waiting. More playing." },
+  { icon: <Group className="h-6 w-6" />, title: "Small groups", sub: "More attention. Faster growth." },
+  { icon: <Target className="h-6 w-6" />, title: "Purposeful training", sub: "Every minute has a purpose." },
+  { icon: <Star className="h-6 w-6" />, title: "Built for the next gen", sub: "Skill, mindset, and confidence." },
 ];
 
 type Track = {
