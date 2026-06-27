@@ -17,6 +17,9 @@ import {
   Runner,
   Whistle,
   Target,
+  Calendar,
+  Chat,
+  Group,
 } from "@/components/icons";
 
 const why = [
@@ -483,42 +486,90 @@ export default function Home() {
         id="register"
         className="relative overflow-hidden bg-navy py-20 text-white sm:py-28"
       >
+        {/* giant faint wordmark watermark */}
+        <span
+          className="pointer-events-none absolute left-1/2 top-6 -z-0 -translate-x-1/2 select-none font-display text-[26vw] leading-none text-white/[0.03] sm:left-8 sm:translate-x-0"
+          aria-hidden
+        >
+          NEXT
+        </span>
         <TennisBall className="float-y absolute bottom-12 left-8 hidden h-14 w-14 opacity-90 lg:block" />
+
+        {/* dashed arrow pointing to the form (desktop) */}
+        <svg
+          className="absolute left-[42%] top-[60%] hidden h-16 w-28 text-brand lg:block"
+          viewBox="0 0 120 60"
+          fill="none"
+          aria-hidden
+        >
+          <path
+            d="M4 40 C 40 10, 70 50, 104 26"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeDasharray="6 7"
+            strokeLinecap="round"
+          />
+          <path
+            d="M94 20 L108 24 L98 35"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
         <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand">
-              Ready to take the next step?
-            </p>
-            <h2 className="display mt-3 text-[clamp(2.25rem,5vw,3.75rem)]">
-              Reserve your child&apos;s spot
+            <span className="inline-block -rotate-2 rounded-lg bg-brand px-3 py-1.5 text-xs font-extrabold uppercase tracking-[0.1em] text-ink">
+              Let&apos;s get started
+            </span>
+            <h2 className="display mt-4 text-[clamp(2.5rem,6vw,4.25rem)]">
+              Reserve your
+              <br />
+              <span className="text-brand">child&apos;s</span> spot
             </h2>
             <p className="mt-4 max-w-sm text-lg text-white/75">
               Spots are limited. Tell us a little about your child and
-              we&apos;ll recommend the right group — indoor for ages 4–12 or
+              we&apos;ll recommend the right program — indoor for ages 4–12 or
               outdoor for 13+.
             </p>
-            <ul className="mt-7 space-y-3 text-[15px]">
+
+            <ul className="mt-8 space-y-5">
               {[
-                "No payment required to register",
-                "We reply within 24 hours",
-                "Complete beginners welcome",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-ink">
-                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                {
+                  icon: <Calendar className="h-5 w-5" />,
+                  title: "No payment required",
+                  sub: "Just register your interest.",
+                },
+                {
+                  icon: <Chat className="h-5 w-5" />,
+                  title: "We reply within 24 hours",
+                  sub: "We'll help you find the right group.",
+                },
+                {
+                  icon: <Group className="h-5 w-5" />,
+                  title: "Beginner friendly",
+                  sub: "All skill levels welcome.",
+                },
+              ].map((b) => (
+                <li key={b.title} className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-ink">
+                    {b.icon}
                   </span>
-                  {item}
+                  <span>
+                    <span className="block text-sm font-bold uppercase tracking-wide">
+                      {b.title}
+                    </span>
+                    <span className="block text-sm text-white/60">{b.sub}</span>
+                  </span>
                 </li>
               ))}
             </ul>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink/50 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)]">
-              <div className="h-1.5 w-full bg-brand" />
-              <div className="p-6 sm:p-8">
-                <RegistrationForm />
-              </div>
+            <div className="rounded-3xl border border-white/10 bg-ink/60 p-6 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)] sm:p-8">
+              <RegistrationForm />
             </div>
           </Reveal>
         </div>
