@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Shot from "@/components/Shot";
 import Faq from "@/components/Faq";
+import TennisBall from "@/components/TennisBall";
 import { PHOTOS, type Shot as ShotData } from "@/components/photos";
 import { Button, IconBadge } from "@/components/ui";
 import {
@@ -324,10 +325,8 @@ export default function ProgramsPage() {
 
       {/* ===================== FINAL CTA ===================== */}
       <section className="relative overflow-hidden bg-emerald py-20 text-white sm:py-28">
-        <div className="pointer-events-none absolute inset-0" aria-hidden>
-          <div className="absolute inset-x-0 top-12 h-px bg-white/10" />
-          <div className="absolute inset-x-0 bottom-12 h-px bg-white/10" />
-        </div>
+        <TennisBall className="float-y absolute right-[10%] top-12 hidden h-16 w-16 drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] lg:block" />
+        <TennisBall className="float-y absolute bottom-12 left-[12%] hidden h-10 w-10 opacity-90 sm:block" />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
           <Reveal>
             <h2 className="display text-[clamp(2.25rem,5.5vw,4rem)]">

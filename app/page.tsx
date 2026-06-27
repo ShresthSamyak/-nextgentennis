@@ -440,22 +440,21 @@ export default function Home() {
       {/* ===================== REGISTER ===================== */}
       <section
         id="register"
-        className="relative overflow-hidden bg-ink py-20 text-white sm:py-28"
+        className="relative overflow-hidden bg-navy py-20 text-white sm:py-28"
       >
-        {/* subtle court-line motif — geometric, on-brand, no decorative blobs */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden>
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/[0.04] lg:block" />
-          <div className="absolute inset-x-0 bottom-16 h-px bg-white/[0.05]" />
-          <div className="absolute inset-x-0 top-16 h-px bg-white/[0.05]" />
-        </div>
+        <TennisBall className="float-y absolute bottom-12 left-8 hidden h-14 w-14 opacity-90 lg:block" />
         <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <h2 className="display text-[clamp(2.25rem,5vw,3.75rem)]">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand">
+              Ready to take the next step?
+            </p>
+            <h2 className="display mt-3 text-[clamp(2.25rem,5vw,3.75rem)]">
               Reserve your child&apos;s spot
             </h2>
             <p className="mt-4 max-w-sm text-lg text-white/75">
-              Tell us a little about your child and we&apos;ll recommend the
-              right group — indoor for 4–12 or outdoor for 13+.
+              Spots are limited. Tell us a little about your child and
+              we&apos;ll recommend the right group — indoor for ages 4–12 or
+              outdoor for 13+.
             </p>
             <ul className="mt-7 space-y-3 text-[15px]">
               {[
@@ -474,14 +473,8 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-600/60 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)] backdrop-blur-sm">
-              <div className="h-1 w-full bg-brand" />
-              <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 sm:px-8">
-                <span className="text-sm font-bold">Quick registration</span>
-                <span className="text-xs font-semibold text-white/55">
-                  About 1 minute
-                </span>
-              </div>
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink/50 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)]">
+              <div className="h-1.5 w-full bg-brand" />
               <div className="p-6 sm:p-8">
                 <RegistrationForm />
               </div>
