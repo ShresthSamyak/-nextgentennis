@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Shot from "@/components/Shot";
 import RegistrationForm from "@/components/RegistrationForm";
-import TennisBall from "@/components/TennisBall";
+import TennisRacket from "@/components/TennisRacket";
 import { PHOTOS } from "@/components/photos";
 import { Button, IconBadge } from "@/components/ui";
 import {
@@ -493,7 +493,7 @@ export default function Home() {
         >
           NEXT
         </span>
-        <TennisBall className="float-y absolute bottom-12 left-8 hidden h-14 w-14 opacity-90 lg:block" />
+        <TennisRacket className="pointer-events-none absolute -bottom-20 -left-16 hidden h-[380px] rotate-[-22deg] text-brand/90 lg:block" />
 
         {/* dashed arrow pointing to the form (desktop) */}
         <svg
