@@ -28,7 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${hanken.variable} h-full`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${anton.variable} ${hanken.variable} h-full`}
+    >
       <head>
         {/* Enable JS-gated reveals without ever shipping blank content to
             no-JS clients / crawlers. */}
