@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Shot from "@/components/Shot";
 import RegistrationForm from "@/components/RegistrationForm";
+import TennisBall from "@/components/TennisBall";
 import { PHOTOS } from "@/components/photos";
 import { Button, IconBadge } from "@/components/ui";
 import {
@@ -119,6 +120,8 @@ export default function Home() {
           className="absolute inset-0 -z-10 bg-gradient-to-t from-navy/90 via-transparent to-navy/20"
           aria-hidden
         />
+
+        <TennisBall className="float-y absolute right-[9%] top-[22%] hidden h-16 w-16 drop-shadow-[0_10px_24px_rgba(0,0,0,0.4)] lg:block" />
 
         <div className="mx-auto w-full max-w-[1240px] px-5 pb-16 pt-28 sm:px-8 sm:pb-24">
           <div className="max-w-2xl text-white">
