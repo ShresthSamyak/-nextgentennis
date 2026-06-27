@@ -153,17 +153,6 @@ p {
   animation: spin-slow 9s linear infinite;
 }
 
-/* ---------- Cursor tennis ball (desktop only) ---------- */
-.cursor-ball {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 80;
-  opacity: 0;
-  will-change: transform;
-}
-
 /* ---------- Reduced motion: everything calms down ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -185,8 +174,5 @@ p {
   }
   .lift:hover {
     transform: none;
-  }
-  .cursor-ball {
-    display: none;
   }
 }

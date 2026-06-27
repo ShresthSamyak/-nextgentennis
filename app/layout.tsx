@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import CursorBall from "@/components/CursorBall";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -43,7 +42,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-white text-navy antialiased">
-        <CursorBall />
         {children}
       </body>
     </html>
