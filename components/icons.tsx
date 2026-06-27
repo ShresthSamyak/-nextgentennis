@@ -107,6 +107,34 @@ export const Diamond = (p: IconProps) => (
   </svg>
 );
 
+export const User = (p: IconProps) => (
+  <svg {...base(p)}>
+    <circle cx="12" cy="8" r="3.5" />
+    <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
+  </svg>
+);
+
+export const Chat = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+    <path d="M8 9.5h8M8 12.5h5" />
+  </svg>
+);
+
+export const Lock = (p: IconProps) => (
+  <svg {...base(p)}>
+    <rect x="5" y="10.5" width="14" height="9.5" rx="2" />
+    <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" />
+  </svg>
+);
+
+export const Pencil = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M4 20h4L18.5 9.5a2 2 0 0 0-2.83-2.83L5 17v3Z" />
+    <path d="M14 7l3 3" />
+  </svg>
+);
+
 export const Check = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="m5 12 5 5 9-11" />
