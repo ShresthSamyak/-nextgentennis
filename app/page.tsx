@@ -305,7 +305,7 @@ export default function Home() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="h-full w-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald/95 via-emerald/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald via-emerald/70 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10">
               <span className="inline-block rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-ink">
                 Ages 13+
