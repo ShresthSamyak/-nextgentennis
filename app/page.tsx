@@ -120,11 +120,6 @@ export default function Home() {
           aria-hidden
         />
 
-        <span
-          className="float-y pointer-events-none absolute right-[10%] top-[18%] hidden h-12 w-12 rounded-full bg-brand shadow-lg sm:block"
-          aria-hidden
-        />
-
         <div className="mx-auto w-full max-w-[1240px] px-5 pb-16 pt-28 sm:px-8 sm:pb-24">
           <div className="max-w-2xl text-white">
             <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-white/80">
@@ -440,13 +435,17 @@ export default function Home() {
       </section>
 
       {/* ===================== REGISTER ===================== */}
-      <section id="register" className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
-        <div className="absolute right-0 top-0 -z-0 h-full w-1/3 opacity-20">
-          <div className="relative h-full w-full">
-            <Shot shot={PHOTOS.ballsCourt} sizes="33vw" className="h-full w-full" />
-          </div>
+      <section
+        id="register"
+        className="relative overflow-hidden bg-ink py-20 text-white sm:py-28"
+      >
+        {/* subtle court-line motif — geometric, on-brand, no decorative blobs */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/[0.04] lg:block" />
+          <div className="absolute inset-x-0 bottom-16 h-px bg-white/[0.05]" />
+          <div className="absolute inset-x-0 top-16 h-px bg-white/[0.05]" />
         </div>
-        <div className="relative mx-auto grid max-w-[1240px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
             <h2 className="display text-[clamp(2.25rem,5vw,3.75rem)]">
               Reserve your child&apos;s spot
@@ -472,8 +471,17 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8">
-              <RegistrationForm />
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy-600/60 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)] backdrop-blur-sm">
+              <div className="h-1 w-full bg-brand" />
+              <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 sm:px-8">
+                <span className="text-sm font-bold">Quick registration</span>
+                <span className="text-xs font-semibold text-white/55">
+                  About 1 minute
+                </span>
+              </div>
+              <div className="p-6 sm:p-8">
+                <RegistrationForm />
+              </div>
             </div>
           </Reveal>
         </div>

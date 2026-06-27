@@ -324,7 +324,10 @@ export default function ProgramsPage() {
 
       {/* ===================== FINAL CTA ===================== */}
       <section className="relative overflow-hidden bg-emerald py-20 text-white sm:py-28">
-        <span className="float-y pointer-events-none absolute right-[8%] top-12 hidden h-14 w-14 rounded-full bg-brand sm:block" aria-hidden />
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="absolute inset-x-0 top-12 h-px bg-white/10" />
+          <div className="absolute inset-x-0 bottom-12 h-px bg-white/10" />
+        </div>
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
           <Reveal>
             <h2 className="display text-[clamp(2.25rem,5.5vw,4rem)]">
