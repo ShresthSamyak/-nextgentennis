@@ -14,6 +14,9 @@ import {
   Check,
   Star,
   ArrowRight,
+  Runner,
+  Whistle,
+  Target,
 } from "@/components/icons";
 
 const why = [
@@ -45,28 +48,44 @@ const why = [
 
 const pathway = [
   {
+    num: "01",
     age: "Ages 4–6",
     title: "Mini Tennis",
-    body: "Movement, coordination and confidence through games.",
-    dot: "bg-emerald",
+    card: "bg-emerald text-white",
+    pill: "bg-white/15 text-white",
+    mark: "text-white",
+    icon: Runner,
+    points: ["Movement & coordination games", "Soft balls, mini courts", "Fun-first foundations"],
   },
   {
+    num: "02",
     age: "Ages 7–9",
     title: "Junior Development",
-    body: "Fundamentals, technique and the first real rallies.",
-    dot: "bg-gold",
+    card: "bg-gold text-ink",
+    pill: "bg-ink/10 text-ink",
+    mark: "text-ink",
+    icon: Whistle,
+    points: ["Rally fundamentals", "Technique & footwork", "First serves"],
   },
   {
+    num: "03",
     age: "Ages 10–12",
     title: "Junior Advanced",
-    body: "Consistency, match play and a wider range of shots.",
-    dot: "bg-sky",
+    card: "bg-sky text-white",
+    pill: "bg-white/15 text-white",
+    mark: "text-white",
+    icon: Target,
+    points: ["Consistency & shot variety", "Live match play", "Point construction"],
   },
   {
+    num: "04",
     age: "Ages 13+",
     title: "Teen Performance",
-    body: "Outdoor training, strategy and competitive play.",
-    dot: "bg-brand",
+    card: "bg-navy text-white",
+    pill: "bg-brand text-ink",
+    mark: "text-brand",
+    icon: Trophy,
+    points: ["Outdoor full-court training", "Strategy, serve & fitness", "Tournament & HS prep"],
   },
 ];
 
@@ -334,34 +353,58 @@ export default function Home() {
 
       {/* ===================== PATHWAY ===================== */}
       <section id="pathway" className="mx-auto max-w-[1240px] px-5 py-20 sm:px-8 sm:py-28">
-        <Reveal className="max-w-2xl">
-          <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
-            One clear pathway
-          </h2>
-          <p className="mt-4 text-lg text-navy/70">
-            Every player moves at the right pace — from a first racquet to
-            competitive play.
-          </p>
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
+              The program pathway
+            </h2>
+            <p className="mt-4 text-lg text-navy/70">
+              Four stages, one journey — every player climbs at the right pace,
+              from a first racquet to competitive play.
+            </p>
+          </div>
+          <Button href="#register" variant="navy" className="shrink-0">
+            Find your stage
+          </Button>
         </Reveal>
 
-        <ol className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* connecting line on desktop */}
-          <span
-            className="absolute left-0 right-0 top-[7px] hidden h-px bg-navy/15 lg:block"
-            aria-hidden
-          />
-          {pathway.map((p, i) => (
-            <Reveal key={p.title} as="li" delay={i * 90} className="relative">
-              <span
-                className={`relative z-10 block h-3.5 w-3.5 rounded-full ${p.dot} ring-4 ring-white`}
-              />
-              <div className="mt-5 text-xs font-bold uppercase tracking-[0.12em] text-navy/50">
-                {p.age}
-              </div>
-              <h3 className="mt-1 text-xl font-bold text-navy">{p.title}</h3>
-              <p className="mt-2 leading-relaxed text-navy/65">{p.body}</p>
-            </Reveal>
-          ))}
+        <ol className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {pathway.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <Reveal key={p.title} as="li" delay={i * 90} className="lift">
+                <article
+                  className={`relative flex h-full flex-col overflow-hidden rounded-3xl p-7 ${p.card}`}
+                >
+                  <Icon
+                    className={`pointer-events-none absolute -bottom-5 -right-3 h-32 w-32 opacity-[0.12] ${p.mark}`}
+                  />
+                  <div className="relative flex items-center justify-between">
+                    <span className="font-display text-5xl leading-none opacity-80">
+                      {p.num}
+                    </span>
+                    <span
+                      className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.08em] ${p.pill}`}
+                    >
+                      {p.age}
+                    </span>
+                  </div>
+                  <h3 className="display relative mt-6 text-2xl">{p.title}</h3>
+                  <ul className="relative mt-4 space-y-2.5">
+                    {p.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2 text-sm">
+                        <Check
+                          className={`mt-0.5 h-4 w-4 shrink-0 ${p.mark}`}
+                          strokeWidth={3}
+                        />
+                        <span className="opacity-90">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
+            );
+          })}
         </ol>
       </section>
 
