@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import Shot from "@/components/Shot";
 import Faq from "@/components/Faq";
-import { Button, IconBadge, Photo, Eyebrow } from "@/components/ui";
+import { PHOTOS, type Shot as ShotData } from "@/components/photos";
+import { Button, IconBadge } from "@/components/ui";
 import {
   Runner,
   Group,
@@ -12,7 +14,6 @@ import {
   Rocket,
   Trophy,
   Check,
-  ArrowRight,
   Target,
   Shield,
   Mountain,
@@ -27,79 +28,89 @@ export const metadata: Metadata = {
 
 const philosophy = [
   {
-    icon: <Runner className="h-7 w-7" />,
+    icon: <Runner className="h-6 w-6" />,
     tone: "emerald" as const,
-    title: "Player First",
-    body: "We develop athletes and people — on and off the court.",
+    title: "Player first",
+    body: "We develop athletes and people — the habits matter as much as the forehand, on the court and off it.",
   },
   {
-    icon: <Group className="h-7 w-7" />,
+    icon: <Group className="h-6 w-6" />,
     tone: "gold" as const,
-    title: "Development Driven",
-    body: "A clear pathway with the right training at every stage.",
+    title: "Development driven",
+    body: "A clear pathway with the right training at every stage, so progress is something families can actually see.",
   },
   {
-    icon: <Star className="h-7 w-7" />,
+    icon: <Star className="h-6 w-6" />,
     tone: "sky" as const,
-    title: "Compete. Grow. Succeed.",
-    body: "We prepare players for school, tournaments and life.",
+    title: "Compete, grow, succeed",
+    body: "We prepare players for school teams, tournaments, and a lifelong relationship with the game.",
   },
 ];
 
 const session = [
   {
-    icon: <Whistle className="h-6 w-6" />,
-    tone: "emerald" as const,
-    title: "Warm-up & Games",
+    icon: <Whistle className="h-5 w-5" />,
+    title: "Warm-up & games",
     time: "10 min",
-    body: "Get active, have fun and build focus.",
+    body: "Get active, have fun, and build focus.",
   },
   {
-    icon: <Rocket className="h-6 w-6" />,
-    tone: "gold" as const,
-    title: "Skill Development",
+    icon: <Rocket className="h-5 w-5" />,
+    title: "Skill development",
     time: "20 min",
-    body: "Technique, footwork and smart practice in small groups.",
+    body: "Technique and footwork in small groups.",
   },
   {
-    icon: <Target className="h-6 w-6" />,
-    tone: "sky" as const,
-    title: "Live Ball & Drills",
+    icon: <Target className="h-5 w-5" />,
+    title: "Live ball & drills",
     time: "20 min",
-    body: "Apply skills, build confidence and improve consistency.",
+    body: "Apply skills and build consistency.",
   },
   {
-    icon: <Trophy className="h-6 w-6" />,
-    tone: "emerald" as const,
-    title: "Match Play",
+    icon: <Trophy className="h-5 w-5" />,
+    title: "Match play",
     time: "10 min",
-    body: "Competitive play to bring it all together.",
+    body: "Competitive play to bring it together.",
   },
 ];
 
-const indoor = {
-  title: "Indoor Training",
-  age: "Ages 4–12",
-  label: "Kids hitting foam balls on indoor courts",
-  points: [
-    "Hand-eye coordination & racquet control",
-    "Footwork and basic strokes",
-    "Rallying and fun, game-based learning",
-    "Year-round, weather-proof, small groups",
-  ],
+type Track = {
+  age: string;
+  title: string;
+  shot: ShotData;
+  tag: string;
+  accent: string;
+  points: string[];
 };
 
-const outdoor = {
-  title: "Outdoor Development",
-  age: "Ages 13+",
-  label: "Teenagers rallying on outdoor courts",
-  points: [
-    "Advanced technique & tactical decisions",
-    "Match strategy, point construction & serve",
-    "Fitness, mental confidence & match play",
-    "Tournament and high school / college prep",
-  ],
-};
+const tracks: Track[] = [
+  {
+    age: "Ages 4–12",
+    title: "Indoor Training",
+    shot: PHOTOS.indoorCoaching,
+    tag: "bg-brand text-ink",
+    accent: "text-emerald",
+    points: [
+      "Hand-eye coordination & racquet control",
+      "Footwork and the first real strokes",
+      "Rallying through fun, game-based learning",
+      "Year-round on weatherproof partner courts",
+    ],
+  },
+  {
+    age: "Ages 13+",
+    title: "Outdoor Development",
+    shot: PHOTOS.overhead,
+    tag: "bg-gold text-ink",
+    accent: "text-gold",
+    points: [
+      "Advanced technique & tactical decisions",
+      "Match strategy, point construction & serve",
+      "Fitness, mental game & competitive play",
+      "Tournament and high-school / college prep",
+    ],
+  },
+];
 
 const values = [
   { icon: <Target className="h-7 w-7" />, label: "Discipline" },
@@ -109,37 +120,22 @@ const values = [
   { icon: <Diamond className="h-7 w-7" />, label: "Grit" },
 ];
 
-const different = [
-  {
-    title: "Small Group Coaching",
-    body: "Every player receives meaningful, personal attention each session.",
-  },
-  {
-    title: "Positive Environment",
-    body: "Players are encouraged to compete, learn and genuinely enjoy the game.",
-  },
-  {
-    title: "Development Focused",
-    body: "Our goal isn't just better tennis — it's confidence and lifelong athletic habits.",
-  },
-];
-
 const faqs = [
   {
     q: "Do you provide equipment?",
-    a: "Yes! Beginners can borrow racquets during their first sessions, so there's nothing to buy before you know your child loves it.",
+    a: "Yes — beginners can borrow racquets during their first sessions, so there's nothing to buy before you know your child loves it.",
   },
   {
     q: "Does my child need experience?",
-    a: "Not at all. We welcome complete beginners and first-timers, and we'll place your child in the right group for their age and comfort level.",
+    a: "Not at all. We welcome complete beginners and first-timers, and we place every child in the right group for their age and comfort level.",
   },
   {
     q: "Where are lessons held?",
-    a: "Indoor sessions for ages 4–12 take place at partner indoor courts, and outdoor development for ages 13+ is held at local outdoor courts across the greater Phoenix area.",
+    a: "Indoor sessions for ages 4–12 run at partner indoor courts; outdoor development for ages 13+ is held at local outdoor courts across the greater Phoenix valley. NextGen is a coaching brand, not a single facility.",
   },
   {
     q: "How do I register?",
-    a: "Simply complete the registration form and we'll reach out within 24 hours with available classes. No payment is required to register.",
+    a: "Complete the registration form and we'll reach out within 24 hours with available classes. No payment is required to register.",
   },
 ];
 
@@ -148,255 +144,199 @@ export default function ProgramsPage() {
     <>
       <Header />
 
-      {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="absolute inset-0 photo opacity-80" aria-hidden="true" />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40"
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.15fr_0.85fr] md:py-24">
-          <div>
-            <Reveal>
-              <Eyebrow className="text-brand">Tennis Programs</Eyebrow>
+      {/* ===================== HERO ===================== */}
+      <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden bg-navy">
+        <div className="clip-in absolute inset-0 -z-10">
+          <Shot shot={PHOTOS.girlRacquet} priority sizes="100vw" className="h-full w-full" />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/20" aria-hidden />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy/90 to-transparent" aria-hidden />
+
+        <div className="mx-auto w-full max-w-[1240px] px-5 pb-16 pt-28 sm:px-8 sm:pb-20">
+          <div className="max-w-3xl text-white">
+            <p className="rise text-sm font-semibold text-white/80">Programs</p>
+            <h1 className="display mt-3 text-[clamp(2.5rem,7vw,4.75rem)]">
+              <span className="rise block" style={{ animationDelay: "60ms" }}>
+                Indoor for 4–12.
+              </span>
+              <span className="rise block" style={{ animationDelay: "150ms" }}>
+                Outdoor for 13+.
+              </span>
+              <span className="rise block text-brand" style={{ animationDelay: "240ms" }}>
+                Excellence for all.
+              </span>
+            </h1>
+            <p className="rise mt-6 max-w-lg text-lg leading-relaxed text-white/85" style={{ animationDelay: "340ms" }}>
+              Age-appropriate coaching and pathway-driven development — whether
+              your child is picking up a racquet for the first time or preparing
+              for competitive play.
+            </p>
+            <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "440ms" }}>
+              <Button href="/#register">Register your child</Button>
+              <Button href="#tracks" variant="ghost" withArrow={false}>
+                See the two tracks
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== PHILOSOPHY ===================== */}
+      <section className="mx-auto max-w-[1240px] px-5 py-20 sm:px-8 sm:py-28">
+        <Reveal className="max-w-2xl">
+          <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
+            How we coach
+          </h2>
+          <p className="mt-4 text-lg text-navy/70">
+            Three commitments that shape every group, every age, every session.
+          </p>
+        </Reveal>
+        <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-3">
+          {philosophy.map((p, i) => (
+            <Reveal key={p.title} delay={i * 100} className="border-t border-navy/15 pt-6">
+              <IconBadge tone={p.tone}>{p.icon}</IconBadge>
+              <h3 className="mt-5 text-xl font-bold text-navy">{p.title}</h3>
+              <p className="mt-2 leading-relaxed text-navy/70">{p.body}</p>
             </Reveal>
-            <Reveal delay={60}>
-              <h1 className="heading-xl mt-3 text-4xl sm:text-5xl lg:text-[3.4rem]">
-                Indoor for ages 4–12.
-                <br />
-                Outdoor for ages 13+.
-                <br />
-                <span className="text-brand">Excellence</span> for all.
-              </h1>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="mt-5 max-w-md text-base text-white/80">
-                Age-appropriate coaching. Pathway-driven development. A love for
-                the game that lasts — whether your child is picking up a racquet
-                for the first time or preparing for competitive play.
-              </p>
-            </Reveal>
-            <Reveal delay={180}>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Button href="/#register">Register Your Child</Button>
-                <Button href="#options" variant="outline" withArrow={false}>
-                  <span className="text-white group-hover:text-navy">
-                    View Training Options
+          ))}
+        </div>
+      </section>
+
+      {/* ===================== SESSION STRUCTURE ===================== */}
+      <section className="bg-bone py-20 sm:py-28">
+        <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
+          <Reveal className="max-w-2xl">
+            <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
+              Inside every session
+            </h2>
+            <p className="mt-4 text-lg text-navy/70">
+              A 60-minute rhythm that keeps players moving, learning, and
+              competing — never standing in line.
+            </p>
+          </Reveal>
+
+          <ol className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <span className="absolute left-0 right-0 top-6 hidden h-px bg-navy/15 lg:block" aria-hidden />
+            {session.map((s, i) => (
+              <Reveal key={s.title} as="li" delay={i * 90} className="relative">
+                <div className="flex items-center gap-3">
+                  <IconBadge tone="emerald" className="bg-bone">
+                    {s.icon}
+                  </IconBadge>
+                  <span className="font-display text-2xl text-navy/30">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-navy">{s.title}</h3>
+                <div className="text-sm font-bold text-emerald">{s.time}</div>
+                <p className="mt-1 text-sm leading-relaxed text-navy/65">{s.body}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ===================== TRACKS (alternating rows) ===================== */}
+      <section id="tracks" className="mx-auto max-w-[1240px] px-5 py-20 sm:px-8 sm:py-28">
+        <Reveal className="max-w-2xl">
+          <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
+            Two tracks, one pathway
+          </h2>
+          <p className="mt-4 text-lg text-navy/70">
+            Pick the right court for your player&apos;s age — they share the same
+            coaching philosophy.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 flex flex-col gap-16 sm:gap-24">
+          {tracks.map((t, i) => (
+            <Reveal
+              key={t.title}
+              className="grid items-center gap-8 md:grid-cols-2 md:gap-14"
+            >
+              <div
+                className={`group relative aspect-[4/3] overflow-hidden rounded-2xl ${
+                  i % 2 === 1 ? "md:order-2" : ""
+                }`}
+              >
+                <Shot shot={t.shot} zoom sizes="(max-width: 768px) 100vw, 50vw" className="h-full w-full" />
+              </div>
+              <div>
+                <span className={`inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] ${t.tag}`}>
+                  {t.age}
+                </span>
+                <h3 className="display mt-4 text-4xl text-navy sm:text-5xl">
+                  {t.title}
+                </h3>
+                <ul className="mt-6 space-y-3">
+                  {t.points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-3 text-navy/80">
+                      <Check className={`mt-1 h-4 w-4 shrink-0 ${t.accent}`} strokeWidth={3} />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button href="/#register" variant="navy" className="mt-8">
+                  Register for {t.title.split(" ")[0]}
                 </Button>
               </div>
             </Reveal>
-          </div>
-          <Reveal delay={150}>
-            <Photo
-              label="Players ages 4–18 with racquets, ready to train"
-              emoji="🎾"
-              className="aspect-[4/3] w-full"
-              rounded="rounded-3xl"
-            />
-          </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* ================= PHILOSOPHY ================= */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center">
-            <Eyebrow>How we coach</Eyebrow>
-            <h2 className="heading-xl mt-2 text-3xl text-navy sm:text-4xl">
-              Our Coaching Philosophy
-            </h2>
-          </Reveal>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {philosophy.map((p, i) => (
-              <Reveal key={p.title} delay={i * 90} className="text-center">
-                <div className="flex flex-col items-center">
-                  <IconBadge tone={p.tone}>{p.icon}</IconBadge>
-                  <h3 className="mt-5 font-display text-lg font-extrabold uppercase text-navy">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 max-w-xs text-sm text-navy/65">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= SESSION STRUCTURE ================= */}
-      <section className="bg-[#f6f8f5] py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center">
-            <Eyebrow>Every session</Eyebrow>
-            <h2 className="heading-xl mt-2 text-3xl text-navy sm:text-4xl">
-              What to Expect in Every Session
-            </h2>
-          </Reveal>
-
+      {/* ===================== WE BUILD NEXTGEN ===================== */}
+      <section className="bg-ink py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
           <Reveal>
-            <div className="mt-12 grid items-start gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr]">
-              {session.map((s, i) => (
-                <div key={s.title} className="contents">
-                  <div className="flex flex-col items-center text-center">
-                    <IconBadge tone={s.tone}>{s.icon}</IconBadge>
-                    <h3 className="mt-4 font-display text-sm font-extrabold uppercase leading-tight text-navy">
-                      {s.title}
-                    </h3>
-                    <span className="mt-1 text-xs font-bold text-emerald">
-                      {s.time}
-                    </span>
-                    <p className="mt-2 max-w-[12rem] text-xs text-navy/60">
-                      {s.body}
-                    </p>
-                  </div>
-                  {i < session.length - 1 && (
-                    <ArrowRight className="mx-auto mt-5 hidden h-6 w-6 text-brand-dark md:block" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ================= TRAINING OPTIONS ================= */}
-      <section id="options" className="bg-white py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center">
-            <Eyebrow>Choose your path</Eyebrow>
-            <h2 className="heading-xl mt-2 text-3xl text-navy sm:text-4xl">
-              Training Options
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {[indoor, outdoor].map((opt, i) => (
-              <Reveal key={opt.title} delay={i * 100}>
-                <article className="lift overflow-hidden rounded-3xl bg-navy text-white shadow-xl">
-                  <div className="relative">
-                    <Photo
-                      label={opt.label}
-                      emoji="🎾"
-                      className="aspect-[16/9] w-full"
-                      rounded="rounded-none"
-                    />
-                    <div className="absolute left-5 top-5">
-                      <span className="rounded-full bg-brand px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-navy">
-                        {opt.age}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-7">
-                    <h3 className="font-display text-2xl font-extrabold uppercase">
-                      {opt.title}
-                    </h3>
-                    <ul className="mt-4 space-y-3">
-                      {opt.points.map((pt) => (
-                        <li key={pt} className="flex items-start gap-3 text-sm">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand text-navy">
-                            <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                          </span>
-                          <span className="text-white/85">{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      href="/#register"
-                      className="mt-6"
-                      variant="lime"
-                    >
-                      Register for {opt.title.split(" ")[0]}
-                    </Button>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= WE BUILD NEXTGEN ================= */}
-      <section className="bg-ink py-16 text-white">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center md:text-left">
-            <h2 className="heading-xl text-3xl sm:text-4xl">
+            <h2 className="display text-[clamp(1.9rem,4.5vw,3.25rem)]">
               We don&apos;t just teach tennis.{" "}
               <span className="text-brand">We build NextGen.</span>
             </h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {values.map((v, i) => (
-              <Reveal
-                key={v.label}
-                delay={i * 70}
-                className="flex flex-col items-center text-center"
-              >
+              <Reveal key={v.label} delay={i * 70} className="flex flex-col items-start gap-3">
                 <span className="text-gold">{v.icon}</span>
-                <span className="mt-3 font-display text-sm font-extrabold uppercase tracking-wide">
-                  {v.label}
-                </span>
+                <span className="font-display text-xl tracking-wide">{v.label}</span>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= WHAT MAKES DIFFERENT ================= */}
-      <section className="bg-[#f6f8f5] py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center">
-            <Eyebrow>The difference</Eyebrow>
-            <h2 className="heading-xl mt-2 text-3xl text-navy sm:text-4xl">
-              What Makes NextGen Different?
-            </h2>
-          </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {different.map((d, i) => (
-              <Reveal key={d.title} delay={i * 90}>
-                <article className="lift h-full rounded-2xl border-l-4 border-brand bg-white p-6 shadow-[0_10px_30px_-15px_rgba(15,23,42,0.25)]">
-                  <h3 className="font-display text-lg font-extrabold uppercase text-navy">
-                    {d.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-navy/65">{d.body}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FAQ ================= */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal className="text-center">
-            <Eyebrow>Good to know</Eyebrow>
-            <h2 className="heading-xl mt-2 text-3xl text-navy sm:text-4xl">
-              Frequently Asked Questions
-            </h2>
-          </Reveal>
-          <div className="mt-12">
-            <Faq items={faqs} />
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FINAL CTA ================= */}
-      <section className="relative overflow-hidden bg-emerald py-20 text-white">
-        <span className="float-slow pointer-events-none absolute right-[10%] top-10 text-5xl opacity-30">
-          🎾
-        </span>
-        <div className="relative mx-auto max-w-3xl px-5 text-center">
+      {/* ===================== FAQ ===================== */}
+      <section className="mx-auto max-w-[1240px] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <Reveal>
-            <h2 className="heading-xl text-4xl sm:text-5xl">
-              Ready to join NextGen Tennis?
+            <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
+              Good to know
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/85">
-              Give your child the opportunity to build confidence, make friends,
-              and fall in love with the game.
+            <p className="mt-4 text-lg text-navy/70">
+              The questions we hear most from parents.
+            </p>
+          </Reveal>
+          <Reveal delay={120}>
+            <Faq items={faqs} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================== FINAL CTA ===================== */}
+      <section className="relative overflow-hidden bg-emerald py-20 text-white sm:py-28">
+        <span className="float-y pointer-events-none absolute right-[8%] top-12 hidden h-14 w-14 rounded-full bg-brand sm:block" aria-hidden />
+        <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
+          <Reveal>
+            <h2 className="display text-[clamp(2.25rem,5.5vw,4rem)]">
+              Ready to join NextGen?
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-white/90">
+              Give your child the chance to build confidence, make friends, and
+              fall for the game.
             </p>
             <div className="mt-8 flex justify-center">
               <Button href="/#register" variant="gold">
-                Register Today
+                Register today
               </Button>
             </div>
           </Reveal>
