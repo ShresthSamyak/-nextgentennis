@@ -219,36 +219,106 @@ export default function ProgramsPage() {
       </section>
 
       {/* ===================== SESSION STRUCTURE ===================== */}
-      <section className="bg-bone py-20 sm:py-28">
+      <section className="bg-ink py-20 text-white sm:py-28">
         <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-          <Reveal className="max-w-2xl">
-            <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
-              Inside every session
+          <Reveal className="text-center">
+            <div className="flex items-center justify-center gap-3">
+              <span className="h-px w-8 bg-brand" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                How we train
+              </span>
+              <span className="h-px w-8 bg-brand" />
+            </div>
+            <h2 className="display mt-3 text-[clamp(2.25rem,5.5vw,4rem)]">
+              Inside every <span className="text-brand">session</span>
             </h2>
-            <p className="mt-4 text-lg text-navy/70">
+            <p className="mx-auto mt-4 max-w-xl text-lg text-white/70">
               A 60-minute rhythm that keeps players moving, learning, and
               competing — never standing in line.
             </p>
           </Reveal>
 
-          <ol className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            <span className="absolute left-0 right-0 top-6 hidden h-px bg-navy/15 lg:block" aria-hidden />
-            {session.map((s, i) => (
-              <Reveal key={s.title} as="li" delay={i * 90} className="relative">
-                <div className="flex items-center gap-3">
-                  <IconBadge tone="emerald" className="bg-bone">
-                    {s.icon}
-                  </IconBadge>
-                  <span className="font-display text-2xl text-navy/30">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+          {/* Session panel */}
+          <Reveal delay={100}>
+            <div className="relative mt-12 overflow-hidden rounded-3xl border border-brand/50 bg-white/[0.02] shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)]">
+              {/* connecting wave (desktop) */}
+              <svg
+                className="pointer-events-none absolute left-0 right-0 top-[206px] hidden h-12 w-full text-brand lg:block"
+                viewBox="0 0 1000 48"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden
+              >
+                <path
+                  d="M0 24 C 125 24 125 8 250 8 S 375 40 500 40 S 625 8 750 8 S 875 40 1000 40"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                />
+              </svg>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+                {session.map((s, i) => (
+                  <div
+                    key={s.title}
+                    className={`relative ${
+                      i > 0 ? "lg:border-l lg:border-white/10" : ""
+                    }`}
+                  >
+                    {/* photo */}
+                    <div className="relative h-[200px] lg:h-[230px]">
+                      <Shot
+                        shot={s.shot}
+                        sizes="(max-width: 1024px) 50vw, 25vw"
+                        className="h-full w-full"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                    </div>
+                    {/* node */}
+                    <div className="relative z-10 -mt-8 flex justify-center">
+                      <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand bg-ink text-brand">
+                        {s.icon}
+                      </span>
+                    </div>
+                    {/* text */}
+                    <div className="px-5 pb-8 pt-3 text-center">
+                      <div className="font-display text-3xl leading-none text-brand">
+                        {s.num}
+                      </div>
+                      <h3 className="display mt-2 text-lg">{s.title}</h3>
+                      <div className="mt-1 text-xs font-bold uppercase tracking-wide text-brand">
+                        {s.time}
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-white/65">
+                        {s.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Feature bar */}
+          <Reveal delay={180}>
+            <div className="mt-6 grid overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] sm:grid-cols-2 lg:grid-cols-4">
+              {sessionFeatures.map((f, i) => (
+                <div
+                  key={f.title}
+                  className={`flex items-center gap-3 p-5 ${
+                    i > 0 ? "border-t border-white/10 sm:border-t-0 lg:border-l" : ""
+                  } ${i === 1 ? "sm:border-l sm:border-white/10 lg:border-l" : ""}`}
+                >
+                  <span className="text-brand">{f.icon}</span>
+                  <div>
+                    <div className="text-sm font-bold uppercase tracking-wide">
+                      {f.title}
+                    </div>
+                    <div className="text-xs text-white/55">{f.sub}</div>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-navy">{s.title}</h3>
-                <div className="text-sm font-bold text-emerald">{s.time}</div>
-                <p className="mt-1 text-sm leading-relaxed text-navy/65">{s.body}</p>
-              </Reveal>
-            ))}
-          </ol>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
