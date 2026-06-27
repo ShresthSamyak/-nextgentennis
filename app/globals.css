@@ -130,6 +130,40 @@ p {
   transform: translateY(-4px);
 }
 
+/* ---------- Floating tennis ball ---------- */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(10deg);
+  }
+}
+.float-y {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 9s linear infinite;
+}
+
+/* ---------- Cursor tennis ball (desktop only) ---------- */
+.cursor-ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0;
+  will-change: transform;
+}
+
 /* ---------- Reduced motion: everything calms down ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -144,10 +178,15 @@ p {
   }
   .rise,
   .clip-in,
-  .marquee-track {
+  .marquee-track,
+  .float-y,
+  .spin-slow {
     animation: none !important;
   }
   .lift:hover {
     transform: none;
+  }
+  .cursor-ball {
+    display: none;
   }
 }
