@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette — NextGen Tennis */
+  --color-brand: #c2e000; /* bright lime / chartreuse accent */
+  --color-brand-dark: #a9c400;
+  --color-emerald: #2fa84f; /* icon green */
+  --color-navy: #0f172a; /* deep navy */
+  --color-navy-700: #16213a;
+  --color-ink: #0b1220; /* near-black sections */
+  --color-gold: #facc15; /* yellow accent */
+  --color-sky: #2f7fe0; /* blue accent (cards/icons) */
+
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-inter);
+
+  --radius-card: 20px;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Typography helpers ---------- */
+.font-display {
+  font-family: var(--font-archivo), Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.heading-xl {
+  font-family: var(--font-archivo), Arial, sans-serif;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Scroll reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Hover lift ---------- */
+.lift {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lift:hover {
+  transform: translateY(-6px);
+}
+
+/* ---------- Floating tennis balls ---------- */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(18deg);
+  }
+}
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+.float-slower {
+  animation: float-slow 11s ease-in-out infinite;
+}
+
+/* ---------- Cursor tennis ball (desktop) ---------- */
+.cursor-ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 32% 30%, #e4ff4d, #c2e000 60%, #9bb800);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.35) inset,
+    0 6px 16px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 90;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease-out;
+}
+.cursor-ball::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent 46%,
+    rgba(255, 255, 255, 0.7) 48%,
+    transparent 50%
+  );
+}
+
+/* ---------- Utility: photo placeholder ---------- */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(194, 224, 0, 0.18), transparent 55%),
+    linear-gradient(135deg, #1b2740, #0f172a 70%);
+}
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.6;
 }
