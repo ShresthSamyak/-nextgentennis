@@ -130,48 +130,6 @@ p {
   transform: translateY(-4px);
 }
 
-/* ---------- Floating accent ---------- */
-@keyframes float-y {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0);
-  }
-  50% {
-    transform: translateY(-16px) rotate(14deg);
-  }
-}
-.float-y {
-  animation: float-y 8s ease-in-out infinite;
-}
-
-/* ---------- Cursor tennis ball (desktop only) ---------- */
-.cursor-ball {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 32% 30%, #eaff63, #c2e000 62%, #93ae00);
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.4) inset,
-    0 4px 14px rgba(0, 0, 0, 0.22);
-  pointer-events: none;
-  z-index: 80;
-  opacity: 0;
-}
-.cursor-ball::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    120deg,
-    transparent 47%,
-    rgba(255, 255, 255, 0.65) 49%,
-    transparent 51%
-  );
-}
-
 /* ---------- Reduced motion: everything calms down ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -186,14 +144,10 @@ p {
   }
   .rise,
   .clip-in,
-  .float-y,
   .marquee-track {
     animation: none !important;
   }
   .lift:hover {
     transform: none;
-  }
-  .cursor-ball {
-    display: none;
   }
 }
