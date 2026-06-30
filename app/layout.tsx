@@ -16,9 +16,9 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NextGen Tennis — Indoor 4–12 · Outdoor 13+ · Greater Phoenix",
+  title: "NextGen Tennis — Indoor 4–11 · Outdoor 11+ · Greater Phoenix",
   description:
-    "Engaging indoor tennis training for ages 4–12 and outdoor development for players 13+. Small-group, confidence-first coaching on partner courts across the Phoenix valley.",
+    "Building the future of youth tennis in the US. Indoor red & orange ball training for ages 4–11 and outdoor development for players 11+, at year-round academies across the greater Phoenix area.",
 };
 
 export default function RootLayout({

@@ -37,9 +37,8 @@ export default function Footer() {
               <MapPin className="h-4 w-4" /> Where we coach
             </h4>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink/75">
-              Indoor and outdoor partner courts across the greater Phoenix
-              valley. We bring the coaching to the right court for every age — no
-              facility of our own required.
+              Year-round youth tennis academies across the greater Phoenix
+              valley, with flagship locations now open and more on the way.
             </p>
           </div>
 
@@ -86,8 +85,8 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink/15 pt-6 sm:flex-row sm:items-center">
           <Logo />
           <p className="text-xs font-semibold text-ink/65">
-            © {new Date().getFullYear()} NextGen Tennis · Indoor 4–12 · Outdoor
-            13+ · Greater Phoenix
+            © {new Date().getFullYear()} NextGen Tennis · Indoor 4–11 · Outdoor
+            11+ · Greater Phoenix
           </p>
         </div>
       </div>

@@ -22,9 +22,9 @@ import {
 } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Programs — NextGen Tennis | Indoor 4–12 · Outdoor 13+",
+  title: "Programs — NextGen Tennis | Indoor 4–11 · Outdoor 11+",
   description:
-    "Age-appropriate tennis programs: indoor training for ages 4–12 and outdoor development for ages 13+. Coaching philosophy, session structure, and FAQs.",
+    "Age-appropriate tennis programs: indoor red & orange ball training for ages 4–11 and outdoor development for ages 11+. Coaching philosophy, session structure, and FAQs.",
 };
 
 const philosophy = [
@@ -101,26 +101,26 @@ type Track = {
 
 const tracks: Track[] = [
   {
-    age: "Ages 4–12",
+    age: "Ages 4–11",
     title: "Indoor Training",
     shot: PHOTOS.indoorCoaching,
     tag: "bg-brand text-ink",
     accent: "text-emerald",
     points: [
+      "Red & orange ball pathway (ages 4–11)",
       "Hand-eye coordination & racquet control",
-      "Footwork and the first real strokes",
-      "Rallying through fun, game-based learning",
+      "Footwork, first strokes & rallying",
       "Year-round on weatherproof partner courts",
     ],
   },
   {
-    age: "Ages 13+",
+    age: "Ages 11+",
     title: "Outdoor Development",
     shot: PHOTOS.overhead,
     tag: "bg-gold text-ink",
     accent: "text-gold",
     points: [
-      "Advanced technique & tactical decisions",
+      "Green & yellow ball on the full court",
       "Match strategy, point construction & serve",
       "Fitness, mental game & competitive play",
       "Tournament and high-school / college prep",
