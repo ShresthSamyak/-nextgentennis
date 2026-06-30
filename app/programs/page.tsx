@@ -241,16 +241,16 @@ export default function ProgramsPage() {
           {/* Session panel */}
           <Reveal delay={100}>
             <div className="relative mt-12 overflow-hidden rounded-3xl border border-brand/50 bg-white/[0.02] shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)]">
-              {/* connecting wave (desktop) */}
+              {/* connecting wave (desktop) — passes through each node center */}
               <svg
-                className="pointer-events-none absolute left-0 right-0 top-[206px] hidden h-12 w-full text-brand lg:block"
+                className="pointer-events-none absolute left-0 right-0 top-[256px] hidden h-12 w-full text-brand lg:block"
                 viewBox="0 0 1000 48"
                 preserveAspectRatio="none"
                 fill="none"
                 aria-hidden
               >
                 <path
-                  d="M0 24 C 125 24 125 8 250 8 S 375 40 500 40 S 625 8 750 8 S 875 40 1000 40"
+                  d="M0 24 L125 24 C 210 4 290 4 375 24 C 460 44 540 44 625 24 C 710 4 790 4 875 24 L1000 24"
                   stroke="currentColor"
                   strokeWidth="2.5"
                 />
@@ -265,13 +265,13 @@ export default function ProgramsPage() {
                     }`}
                   >
                     {/* photo */}
-                    <div className="relative h-[200px] lg:h-[230px]">
+                    <div className="relative h-[260px] lg:h-[280px]">
                       <Shot
                         shot={s.shot}
                         sizes="(max-width: 1024px) 50vw, 25vw"
                         className="h-full w-full"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
                     </div>
                     {/* node */}
                     <div className="relative z-10 -mt-8 flex justify-center">
