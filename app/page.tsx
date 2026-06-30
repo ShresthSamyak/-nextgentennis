@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -127,15 +128,18 @@ export default function Home() {
       {/* ===================== HERO ===================== */}
       <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-navy">
         <div className="clip-in absolute inset-0 -z-10">
-          <Shot
-            shot={PHOTOS.heroWall}
+          <Image
+            src="/hero.png"
+            alt="A young NextGen Tennis player in a lime team shirt pumps his fist and grins after a great point on an indoor court"
+            fill
             priority
             sizes="100vw"
-            className="h-full w-full"
+            className="object-cover"
+            style={{ objectPosition: "68% 30%" }}
           />
         </div>
         <div
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/10"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/80 to-navy/10"
           aria-hidden
         />
         <div
