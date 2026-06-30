@@ -38,57 +38,57 @@ const why = [
   {
     icon: <HomeIcon className="h-6 w-6" />,
     tone: "sky" as const,
-    title: "Indoor, ages 4–12",
-    body: "Weatherproof partner courts keep younger players developing year-round — no heat days, no rainouts.",
+    title: "Indoor, ages 4–11",
+    body: "Weatherproof partner courts keep younger players on the red & orange ball pathway year-round — no heat days, no rainouts.",
   },
   {
     icon: <Sun className="h-6 w-6" />,
     tone: "emerald" as const,
-    title: "Outdoor, ages 13+",
-    body: "Teens train outside on full courts: match play, fitness, and real prep for high-school tennis and beyond.",
+    title: "Outdoor, ages 11+",
+    body: "Older players move outside to the full court: match play, fitness, and real prep for high-school tennis and beyond.",
   },
 ];
 
 const pathway = [
   {
     num: "01",
-    age: "Ages 4–6",
-    title: "Mini Tennis",
+    age: "Ages 4–8 · Indoor",
+    title: "Red Ball",
     card: "bg-emerald text-white",
     pill: "bg-white/15 text-white",
     mark: "text-white",
     icon: Runner,
-    points: ["Movement & coordination games", "Soft balls, mini courts", "Fun-first foundations"],
+    points: ["Foam & red balls, mini courts", "Movement & coordination", "Fun-first foundations"],
   },
   {
     num: "02",
-    age: "Ages 7–9",
-    title: "Junior Development",
+    age: "Ages 7–11 · Indoor",
+    title: "Orange Ball",
     card: "bg-gold text-ink",
     pill: "bg-ink/10 text-ink",
     mark: "text-ink",
     icon: Whistle,
-    points: ["Rally fundamentals", "Technique & footwork", "First serves"],
+    points: ["Lower-bounce orange balls", "Three-quarter court rallies", "Technique & first serves"],
   },
   {
     num: "03",
-    age: "Ages 10–12",
-    title: "Junior Advanced",
+    age: "Ages 11+ · Outdoor",
+    title: "Green Ball",
     card: "bg-sky text-white",
     pill: "bg-white/15 text-white",
     mark: "text-white",
     icon: Target,
-    points: ["Consistency & shot variety", "Live match play", "Point construction"],
+    points: ["Full court, green-dot balls", "Consistency & live match play", "Point construction"],
   },
   {
     num: "04",
-    age: "Ages 13+",
-    title: "Teen Performance",
+    age: "Ages 11+ · Outdoor",
+    title: "Yellow Ball",
     card: "bg-navy text-white",
     pill: "bg-brand text-ink",
     mark: "text-brand",
     icon: Trophy,
-    points: ["Outdoor full-court training", "Strategy, serve & fitness", "Tournament & HS prep"],
+    points: ["Standard yellow balls", "Strategy, serve & fitness", "Tournament & HS prep"],
   },
 ];
 
@@ -101,7 +101,7 @@ const steps = [
   {
     n: "02",
     title: "We match the group",
-    body: "We recommend indoor (4–12) or outdoor (13+) by age and experience, within 24 hours.",
+    body: "We recommend indoor (4–11) or outdoor (11+) by age and experience, within 24 hours.",
   },
   {
     n: "03",
@@ -111,8 +111,8 @@ const steps = [
 ];
 
 const marquee = [
-  "Indoor 4–12",
-  "Outdoor 13+",
+  "Indoor 4–11",
+  "Outdoor 11+",
   "Small groups",
   "Fun first",
   "Greater Phoenix",
@@ -146,9 +146,9 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1240px] px-5 pb-16 pt-28 sm:px-8 sm:pb-24">
           <div className="max-w-2xl text-white">
             <p className="rise flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-white/80">
-              <span className="text-brand">Indoor 4–12</span>
+              <span className="text-brand">Indoor 4–11</span>
               <span className="text-white/30">/</span>
-              <span className="text-brand">Outdoor 13+</span>
+              <span className="text-brand">Outdoor 11+</span>
               <span className="text-white/30">/</span>
               <span>Greater Phoenix</span>
             </p>
@@ -217,11 +217,15 @@ export default function Home() {
           </Reveal>
           <Reveal className="md:col-span-5 md:pt-3" delay={120}>
             <p className="text-lg leading-relaxed text-navy/75">
-              NextGen Tennis is a coaching brand, not a facility. We partner with
-              quality indoor and outdoor courts across the Phoenix valley so we
-              can put every player on the right court for their age and stage —
-              from a four-year-old&apos;s first foam ball to a teenager&apos;s
-              first tournament.
+              NextGen Tennis is building the future of youth tennis in the US —
+              creating the nation&apos;s leading network of year-round youth
+              tennis academies and making high-quality coaching more accessible
+              to every family. Flagship locations in the greater Phoenix area.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-navy/75">
+              We partner with quality indoor and outdoor courts across the
+              valley — from a four-year-old&apos;s first red ball to a
+              teenager&apos;s first tournament.
             </p>
             <div className="mt-6 flex gap-8">
               <div>
@@ -248,10 +252,6 @@ export default function Home() {
             <h2 className="display text-[clamp(2rem,4.5vw,3.25rem)] text-navy">
               Why parents choose NextGen
             </h2>
-            <p className="mt-4 text-lg text-navy/70">
-              The coaching feels like a real consumer brand — with the warmth of
-              a neighborhood program.
-            </p>
           </Reveal>
 
           <div className="mt-14 grid gap-x-12 gap-y-12 sm:grid-cols-2">
@@ -286,7 +286,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/10" />
             <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10">
               <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-ink">
-                Ages 4–12
+                Ages 4–11
               </span>
               <h3 className="display mt-4 text-4xl sm:text-5xl">
                 Indoor Training
@@ -294,7 +294,7 @@ export default function Home() {
               <ul className="mt-5 space-y-2.5 text-[15px] text-white/85">
                 {[
                   "Year-round, weatherproof courts",
-                  "Coordination, footwork & first strokes",
+                  "Red & orange ball progression",
                   "Small, game-based groups",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-2.5">
@@ -326,15 +326,15 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-emerald via-emerald/70 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10">
               <span className="inline-block rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-ink">
-                Ages 13+
+                Ages 11+
               </span>
               <h3 className="display mt-4 text-4xl sm:text-5xl">
                 Outdoor Development
               </h3>
               <ul className="mt-5 space-y-2.5 text-[15px] text-white/90">
                 {[
-                  "Full-court match play & strategy",
-                  "Serve, fitness & the mental game",
+                  "Green & yellow ball, full court",
+                  "Match play, serve & the mental game",
                   "High-school & tournament prep",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-2.5">
@@ -530,8 +530,8 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-sm text-lg text-white/75">
               Spots are limited. Tell us a little about your child and
-              we&apos;ll recommend the right program — indoor for ages 4–12 or
-              outdoor for 13+.
+              we&apos;ll recommend the right program — indoor for ages 4–11 or
+              outdoor for 11+.
             </p>
 
             <ul className="mt-8 space-y-5">

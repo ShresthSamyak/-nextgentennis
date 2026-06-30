@@ -157,14 +157,14 @@ export default function RegistrationForm() {
             onChange={() => setProgram("indoor")}
             icon={<HomeIcon className="h-6 w-6" />}
             title="Indoor Tennis"
-            sub="Ages 4–12"
+            sub="Ages 4–11"
           />
           <ProgramCard
             checked={program === "outdoor"}
             onChange={() => setProgram("outdoor")}
             icon={<Sun className="h-6 w-6" />}
             title="Outdoor Tennis"
-            sub="Ages 13+"
+            sub="Ages 11+"
           />
         </div>
       </fieldset>
