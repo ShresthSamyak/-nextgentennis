@@ -147,7 +147,7 @@ const faqs = [
   },
   {
     q: "Where are lessons held?",
-    a: "Indoor sessions for ages 4–12 run at partner indoor courts; outdoor development for ages 13+ is held at local outdoor courts across the greater Phoenix valley. NextGen is a coaching brand, not a single facility.",
+    a: "Indoor sessions for ages 4–11 run at partner indoor courts; outdoor development for ages 11+ is held at local outdoor courts across the greater Phoenix valley, with flagship academy locations now open.",
   },
   {
     q: "How do I register?",
@@ -173,10 +173,10 @@ export default function ProgramsPage() {
             <p className="rise text-sm font-semibold text-white/80">Programs</p>
             <h1 className="display mt-3 text-[clamp(2.5rem,7vw,4.75rem)]">
               <span className="rise block" style={{ animationDelay: "60ms" }}>
-                Indoor for 4–12.
+                Indoor for 4–11.
               </span>
               <span className="rise block" style={{ animationDelay: "150ms" }}>
-                Outdoor for 13+.
+                Outdoor for 11+.
               </span>
               <span className="rise block text-brand" style={{ animationDelay: "240ms" }}>
                 Excellence for all.
