@@ -169,15 +169,6 @@ export default function Home() {
               </span>
             </h1>
 
-            <p
-              className="rise mt-6 max-w-md text-lg leading-relaxed text-white/85"
-              style={{ animationDelay: "300ms" }}
-            >
-              From first swings to competitive match play — engaging indoor
-              training for younger athletes and outdoor development for players
-              ready to take the next step.
-            </p>
-
             <div
               className="rise mt-8 flex flex-wrap items-center gap-3"
               style={{ animationDelay: "400ms" }}
